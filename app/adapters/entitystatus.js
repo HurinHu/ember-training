@@ -4,7 +4,7 @@ import fetch from 'fetch';
 export default class EntitystatusAdapter extends RESTAdapter {
   // define api base url
   //host = 'https://localhost:7125/v1/';
-  host = 'http://10.30.4.11/v1/';
+  host = 'http://sazw19devhh/v1/';
   contentType = 'application/json';
   dataType = 'json';
   init() {

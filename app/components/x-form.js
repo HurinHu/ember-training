@@ -25,7 +25,6 @@ export default class modelXFormComponent extends Component {
     *submit(model) {
         try{
             let item = this.store.createRecord('entity', {
-                entityID: model.entityID !== undefined ? model.entityID : null,
                 entityName: model.entityName !== undefined ? model.entityName : null,
                 websiteUrl: model.websiteUrl !== undefined ? model.websiteUrl : null,
                 nzbnNumber: model.nzbnNumber !== undefined ? this.nzbnNumber : null,
