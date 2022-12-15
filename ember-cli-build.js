@@ -4,7 +4,47 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
-    // Add options here
+    'ember-bootstrap': {
+      bootstrapVersion: 5,
+      importBootstrapCSS: false,
+    },
+    '@embroider/macros': {
+      setConfig: {
+        '@ember-data/store': {
+          polyfillUUID: true
+        },
+      },
+    },
+    babel: {
+      plugins: [require.resolve('ember-auto-import/babel-plugin')],
+    },
+    fingerprint: {
+      // don't fingerprint images because we need to be able to access them dynamically
+      // see more info here: https://github.com/ef4/prember/issues/52
+      extensions: ['js', 'css', 'map'],
+      generateAssetMap: true,
+      fingerprintAssetMap: true,
+    },
+    ifa: {
+      enabled: true,
+      inline: true,
+    },
+
+    minifyCSS: {
+      options: { processImport: true },
+    },
+
+    // prember: {
+    //   urls: ['', 'home', 'about', 'entities'],
+    // },
+
+    'ember-validated-form': {
+      theme: 'bootstrap',
+      features: {
+        scrollErrorIntoView: true,
+      },
+      defaults: {},
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
