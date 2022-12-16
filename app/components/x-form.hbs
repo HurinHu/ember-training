@@ -3,7 +3,7 @@
   @on-submit={{perform this.submit}}
   as |f|
 >
-    <BsAlert @visible="{{if (eq  this.lert 'success') true}}{{if (eq  this.alert 'error') true}}" @type="{{if (eq  this.alert 'success') 'success'}}{{if (eq  this.alert 'error') 'danger'}}" >
+    <BsAlert id="msg" @visible="{{if (eq  this.lert 'success') true}}{{if (eq  this.alert 'error') true}}" @type="{{if (eq  this.alert 'success') 'success'}}{{if (eq  this.alert 'error') 'danger'}}" >
         {{{ this.msg }}}
     </BsAlert>
 
@@ -29,6 +29,7 @@
   <br>
 
   <f.submit
+    id="submit"
     class="form-btn"
     @label={{if this.submit.isRunning "Creating ..." "Create"}}
     @loading={{this.submit.isRunning}}

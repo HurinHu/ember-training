@@ -48,7 +48,6 @@ export default class modelXFormComponent extends Component {
                 });
             })
             .catch((error) => {
-                console.log(error);
                 item.deleteRecord();
                 this.alert = 'error';
                 this.msg = error.message;
