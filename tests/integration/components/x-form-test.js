@@ -9,18 +9,10 @@ module('Integration | Component | x-form', function (hooks) {
   test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
-
-    await render(hbs`<XForm />`);
-
+    const store = this.owner.lookup('service:store');
+    const entity = this.owner.lookup('service:store').modelFor('entity');
+    this.set('entityModel', entity);
+    await render(hbs`<Sidebar @model={{this.entityModel}} />`);
     assert.dom(this.element).hasText('');
-
-    // Template block usage:
-    await render(hbs`
-      <XForm>
-        template block text
-      </XForm>
-    `);
-
-    assert.dom(this.element).hasText('template block text');
   });
 });
