@@ -24,19 +24,12 @@ export default class UserSerializer extends JSONAPISerializer {
       }
       payload.data = data;
     }
-    return super.normalizeResponse(...arguments);
+    return super.normalizeResponse(store, primaryModelClass, payload, id, requestType);
   }
 
   // restructure the post data
   serialize(snapshot, options) {
-    let json = {
-      attributes: {
-        firstname: snapshot.attr('firstname'),
-        lastname: snapshot.attr('lastname'),
-        email: snapshot.attr('email'),
-        avatar: snapshot.attr('avatar'),
-      },
-    };
+    let json = {attributes: {firstname: snapshot.attr('firstname'),lastname: snapshot.attr('lastname'),email: snapshot.attr('email'),avatar: snapshot.attr('avatar')}};
     if (options.includeId) {
       json.id = snapshot.id;
     }
